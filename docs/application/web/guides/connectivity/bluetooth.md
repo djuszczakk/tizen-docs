@@ -27,7 +27,7 @@ To use the Application (in [mobile](../../api/latest/device_api/mobile/tizen/app
  -->
 ## Handling UUIDs and binary data in Bluetooth API
 
-### Hnadling UUIDs
+### Handling UUIDs
 According to the [Bluetooth Core Specification](https://www.bluetooth.com/specifications/bluetooth-core-specification/), UUIDs used to represent Bluetooth objects can take 3 forms:
 
    * 128-bit representation: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", where each 'X' stands for a hexadecimal digit.  
@@ -47,7 +47,7 @@ The 128-bit UUID that is the base for UUIDs having 16-bit or 32-bit equivalents 
 The `Bytes` type, that aggregates all types in Bluetooth API used to pass binary data. It can be either a *byte[]* or a *DOMString* or a *Uint8Array*.
 
 `BluetoothManager` methods to manipulate binary data:
-   * toByteArray()
+   * `toByteArray()`
       ```
       var dataInt8Array = new Int8Array([24, 177]);
       var dataUint8Array = new Uint8Array([24, 177]);
@@ -59,7 +59,7 @@ The `Bytes` type, that aggregates all types in Bluetooth API used to pass binary
       ```
       Both first, second and third variables are equal arrays.
 
-   * toDOMString()
+   * `toDOMString()`
       ```
       var dataInt8Array = new Int8Array([24, 177]);
       var dataUint8Array = new Uint8Array([24, 177]);
@@ -71,7 +71,7 @@ The `Bytes` type, that aggregates all types in Bluetooth API used to pass binary
       ```
       Both first, second and third variables are equal to *"0x18b1"*.
 
-   * toUint8Array()
+   * `toUint8Array()`
       ```
       var dataInt8Array = new Int8Array([24, 177]);
       var dataUint8Array = new Uint8Array([24, 177]);
@@ -83,7 +83,7 @@ The `Bytes` type, that aggregates all types in Bluetooth API used to pass binary
       ```
       Both first, second and third variables are equal.
 
-   * uuidTo128bit()
+   * `uuidTo128bit()`
       ```
       var uuidFrom16bits = tizen.bluetooth.uuidTo128bit("1234");
       var uuidFrom32bits = tizen.bluetooth.uuidTo128bit("ab5690ef");
@@ -94,7 +94,7 @@ The `Bytes` type, that aggregates all types in Bluetooth API used to pass binary
       uuidFrom32bits is equal to "ab5690ef-0000-1000-8000-00805f9b34fb"  
       uuidFrom128bits is equal to "abcdef01-2345-6789-abcd-ef0123456789"
 
-   * uuidToShortestPossible()
+   * `uuidToShortestPossible()`
       ```
       var from16Bit = tizen.bluetooth.uuidToShortestPossible("1234");
       var from32Bit = tizen.bluetooth.uuidToShortestPossible("0000acdf");
@@ -107,7 +107,7 @@ The `Bytes` type, that aggregates all types in Bluetooth API used to pass binary
       from128BitFirst is equal to "ab5690ef"  
       from128BitSecond is equal to "abcdef01-2345-6789-abcd-ef0123456789"
 
-   * uuidsEqual()
+   * `uuidsEqual()`
       ```
       var first = tizen.bluetooth.uuidsEqual("1234", "00001234");
       var second = tizen.bluetooth.uuidsEqual("ab5690ef", "ab5690ef-0000-1000-8000-00805F9B34FB");
