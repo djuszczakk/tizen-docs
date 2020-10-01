@@ -732,7 +732,7 @@ To get the ATT MTU value or request change of the ATT MTU value:
    device.requestAttMtuChange(newAttMtuValue);
    ```
    > **Note**
-   > After calling `requestAttMtuChange()` function ATT MTU value change should be accepted if both devices support new ATT MTU value according to the BLE stanard.
+   > After calling `requestAttMtuChange()` function ATT MTU value change should be accepted if both devices support new ATT MTU value according to the [Bluetooth Core Specification](https://www.bluetooth.com/specifications/bluetooth-core-specification/).
 <!-- END #06 -->
 
 <!-- TODO #07
@@ -759,7 +759,7 @@ To recieve notification on ATT MTU value changes:
    ```
    The change of ATT MTU value will trigger the callback function.
    > **Note**
-   > After calling `requestAttMtuChange()` function ATT MTU value change should be accepted if both devices support new ATT MTU value according to the BLE stanard.
+   > After calling `requestAttMtuChange()` function ATT MTU value change should be accepted if both devices support new ATT MTU value according to the [Bluetooth Core Specification](https://www.bluetooth.com/specifications/bluetooth-core-specification/).
 
 When a listener monitoring the ATT MTU value changes is no longer needed, you can remove it:
 
