@@ -721,46 +721,18 @@ To read and write a value of the Bluetooth descriptor:
 
 To get the ATT MTU value or request change of the ATT MTU value:
 
-1. Get BLE adapter:
-   ```
-   var adapter = tizen.bluetooth.getLEAdapter();
-   ```
-2. Start scannining and search for a device:
-   ```
-   var device;
-   adapter.startScan(function onsuccess(scannedDevice) {
-   if (device.name == "MyBLEDevice") {
-      device = scannedDevice;
-      console.log("Found device: " + device.name + ", address: " + device.address);
-   }});
-   ```
-3. When the device will be found, stop scanning:
-   ```
-   adapter.stopScan();
-   ```
-4. Connect to the device:
-   ```
-   function onerror(e) {
-      console.log("Failed to connect to device: " + e.message);
-   }
-
-   function onconnected() {
-      console.log("Connected to device");
-   }
-
-   device.connect(onconnected, onerror);
-   ```
-5. If the device has been connected call `getAttMtu()` function on the device object to get current ATT MTU value:
+1. [Connect to a Bluetooth Low Energy device](#connecting-to-a-bluetooth-low-energy-device).
+2. If the `device` has been connected call `getAttMtu()` function on the `device` object to get current ATT MTU value:
    ```
    var attMtu = device.getAttMtu();
    ```
-6. If the device has been connected call `requestAttMtuChange()` function on the device object to request a change of the ATT MTU value. Pass desired ATT MTU value as an attribute:
+3. If the `device` has been connected call `requestAttMtuChange()` function on the `device` object to request a change of the ATT MTU value. Pass desired ATT MTU value as an argument:
    ```
    var newAttMtuValue = 64;
    device.requestAttMtuChange(newAttMtuValue);
    ```
    > **Note**
-   > Call to `requestAttMtuChange()` function should be accepted only if both devices support new ATT MTU value.
+   > After calling `requestAttMtuChange()` function ATT MTU value change should be accepted if both devices support new ATT MTU value according to the BLE stanard.
 <!-- END #06 -->
 
 <!-- TODO #07
@@ -771,55 +743,27 @@ To get the ATT MTU value or request change of the ATT MTU value:
 
 To recieve notification on ATT MTU value changes:
 
-1. Get BLE adapter:
-   ```
-   var adapter = tizen.bluetooth.getLEAdapter();
-   ```
-2. Start scannining and search for a device:
-   ```
-   var device;
-   adapter.startScan(function onsuccess(scannedDevice) {
-   if (device.name == "MyBLEDevice") {
-      device = scannedDevice;
-      console.log("Found device: " + device.name + ", address: " + device.address);
-   }});
-   ```
-3. When the device will be found, stop scanning:
-   ```
-   adapter.stopScan();
-   ```
-4. Connect to the device:
-   ```
-   function onerror(e) {
-      console.log("Failed to connect to device: " + e.message);
-   }
-
-   function onconnected() {
-      console.log("Connected to device");
-   }
-
-   device.connect(onconnected, onerror);
-   ```
-5. If the device has been connected call `addAttMtuChangeListener()` function providing as a parameter the callback function to be called on each change of the ATT MTU value:
+1. [Connect to a Bluetooth Low Energy device](#connecting-to-a-bluetooth-low-energy-device).
+2. If the `device` has been connected call `addAttMtuChangeListener()` function providing as a parameter the callback function to be called on each change of the ATT MTU value:
    ```
    function attMtuChangeCallback(newAttMtuValue) {
       console.log("ATT MTU value has changed to: " + newAttMtuValue);
    }
    var listenerId = device.addAttMtuChangeListener(attMtuChangeCallback);
    ```
-   The `listenerId` value stores an identificator of the listener, wchich is needed to remove the listener.
-6. After setting up the listener with `addAttMtuChangeListener()` function, the callback can be invoked by changing the ATT MTU value:
+   The `listenerId` value stores an identifier of the listener, which is needed to remove the listener.
+3. After setting up the listener with `addAttMtuChangeListener()` function, the callback can be invoked by changing the ATT MTU value:
    ```
    var newAttMtuValue = 50;
    device.requestAttMtuChange(newAttMtuValue);
    ```
    The change of ATT MTU value will trigger the callback function.
    > **Note**
-   > Call to `requestAttMtuChange()` function should be accepted only if both devices support new ATT MTU value.
+   > After calling `requestAttMtuChange()` function ATT MTU value change should be accepted if both devices support new ATT MTU value according to the BLE stanard.
 
-When a callback monitoring the ATT MTU value changes is no longer needed, you can remove it:
+When a listener monitoring the ATT MTU value changes is no longer needed, you can remove it:
 
-7. Call `removeAttMtuChangeListener()` providing the identificator of the listener you want to remove.
+4. Call `removeAttMtuChangeListener()` providing the identifier of the listener you want to remove.
    ```
    device.removeAttMtuChangeListener(listenerId);
    ```
