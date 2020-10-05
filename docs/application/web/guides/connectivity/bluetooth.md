@@ -741,7 +741,7 @@ To get the ATT MTU value or request change of the ATT MTU value:
  -->
 ### Receiving Notifications on ATT MTU changes
 
-To recieve notification on ATT MTU value changes:
+To recieve notifications on ATT MTU value changes:
 
 1. [Connect to a Bluetooth Low Energy device](#connecting-to-a-bluetooth-low-energy-device).
 2. If the `device` has been connected call `addAttMtuChangeListener()` function providing as a parameter the callback function to be called on each change of the ATT MTU value:
