@@ -554,7 +554,7 @@ To read and write a value of the Bluetooth characteristic:
    var gattService = remoteDevice.getService(serviceUUIDs[0]);
    ```
 
-4. Select an interesting characteristic from the `characteristics` attribute of the `BluetoothGATTService` interface (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothGATTService), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothGATTService) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothGATTService) applications). The characteristic may be selected by the uuid attribute:
+4. Select an interesting characteristic from the `characteristics` attribute of the `BluetoothGATTService` interface (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothGATTService), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothGATTService) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothGATTService) applications). The characteristic may be selected by the `uuid` attribute:
 
    ```
    var property = gattService.characteristics.find(characteristic => characteristic.uuid === "abcd");
@@ -667,13 +667,13 @@ To read and write a value of the Bluetooth descriptor:
    var gattService = remoteDevice.getService(serviceUUIDs[0]);
    ```
 
-4. Select an interesting characteristic from the `characteristics` attribute of the `BluetoothGATTService` interface (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothGATTService), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothGATTService) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothGATTService) applications). The characteristic may be selected by the uuid attribute:
+4. Select an interesting characteristic from the `characteristics` attribute of the `BluetoothGATTService` interface (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothGATTService), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothGATTService) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothGATTService) applications). The characteristic may be selected by the `uuid` attribute:
 
    ```
    var characteristic = gattService.characteristics.find(characteristic => characteristic.uuid === "abcd");
    ```
 
-5. Select an interesting descriptor from the `descriptors` attribute of the `BluetoothGATTCharacteristic` interface (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothGATTCharacteristic), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothGATTCharacteristic) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothGATTCharacteristic) applications). The descriptor may be selected by the uuid attribute:
+5. Select an interesting descriptor from the `descriptors` attribute of the `BluetoothGATTCharacteristic` interface (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothGATTCharacteristic), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothGATTCharacteristic) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothGATTCharacteristic) applications). The descriptor may be selected by the `uuid` attribute:
 
    ```
    var descriptor = characteristic.descriptors.find(descriptor => descriptor.uuid === "dcba");
@@ -744,15 +744,15 @@ To start the local GATT server:
 var server = tizen.bluetooth.getGATTServer();
 ```
 
-2. Set up callbacks and start the local gatt server with `start()` method of `BluetoothGATTServer` (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothGATTServer), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothGATTServer) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothGATTServer) applications) interface:
+2. Set up callbacks and start the local GATT server with `start()` method of `BluetoothGATTServer` (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothGATTServer), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothGATTServer) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothGATTServer) applications) interface:
 
 ```
 var onSuccess = function() {
    console.log("Server started successfully");
 };
 
-var onError = function(e) {
-   console.error("Failed to start the server, error: " + e);
+var onError = function(error) {
+   console.error("Failed to start the server, error: " + error.message);
 };
 
 server.start(onSuccess, onError);
@@ -773,15 +773,15 @@ To stop the local GATT server:
 var server = tizen.bluetooth.getGATTServer();
 ```
 
-2. Set up callbacks and stop the local gatt server with `stop()` method of `BluetoothGATTServer` (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothGATTServer), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothGATTServer) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothGATTServer) applications) interface:
+2. Set up callbacks and stop the local GATT server with `stop()` method of `BluetoothGATTServer` (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothGATTServer), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothGATTServer) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothGATTServer) applications) interface:
 
 ```
 var onSuccess = function() {
    console.log("Server stopped successfully");
 };
 
-var onError = function(e) {
-   console.error("Failed to stop the server, error: " + e);
+var onError = function(error) {
+   console.error("Failed to stop the server, error: " + error.message);
 };
 
 server.stop(onSuccess, onError);
