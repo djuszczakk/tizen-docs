@@ -763,7 +763,7 @@ var connectChangeCallback = {
 };
 ```
 
-2. Add defined callback with method `addConnectStateChangeListener()` (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothLEAdapter::addConnectStateChangeListener), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothLEAdapter::addConnectStateChangeListener) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothLEAdapter::addConnectStateChangeListener) applications):
+2. Add the defined callback with `addConnectStateChangeListener()` method (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothLEAdapter::addConnectStateChangeListener), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothLEAdapter::addConnectStateChangeListener) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothLEAdapter::addConnectStateChangeListener) applications):
 
 ```
 var adapter = tizen.bluetooth.getLEAdapter();
@@ -772,7 +772,7 @@ var watchId = adapter.addConnectStateChangeListener(connectChangeCallback);
 
 The `watchId` value stores an identifier of the listener, which is needed to remove the listener.
 
-3. When a listener monitoring the connection changes is no longer needed, you can remove it:
+3. When a listener monitoring the connection changes is no longer needed, it can be removed:
 
 ```
 adapter.removeConnectStateChangeListener(watchId);
@@ -793,12 +793,12 @@ var connectionMtuCB = function(mtu) {
    console.log("The ATT MTU value: " + mtu);
 };
 
-var errorCB = function(e) {
-   console.log("Cannot retrieve ATT MTU value, error: " + e);
+var errorCB = function(error) {
+   console.log("Cannot retrieve ATT MTU value, error: " + error.message);
 };
 ```
 
-2. Select proper remote client's address and get the value of ATT MTU with method `getConnectionMtu()` (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothGATTServer::getConnectionMtu), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothGATTServer::getConnectionMtu) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothGATTServer::getConnectionMtu) applications):
+2. Select proper remote client's address and get the value of ATT MTU with `getConnectionMtu()` method (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothGATTServer::getConnectionMtu), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothGATTServer::getConnectionMtu) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothGATTServer::getConnectionMtu) applications):
 
 ```
 var clientAddress = "12:34:56:78:90:ab";
