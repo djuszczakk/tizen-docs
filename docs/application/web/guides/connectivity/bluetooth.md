@@ -57,7 +57,7 @@ The `Bytes` type, that aggregates all types in Bluetooth API used to pass binary
       var second = tizen.bluetooth.toByteArray(dataUint8Array);
       var third = tizen.bluetooth.toByteArray(dataString);
       ```
-      Both first, second and third variables are equal arrays.
+      `first`, `second` and `third` variables are equal arrays.
 
    * `toDOMString()`
       ```
@@ -69,7 +69,7 @@ The `Bytes` type, that aggregates all types in Bluetooth API used to pass binary
       var second = tizen.bluetooth.toDOMString(dataUint8Array);
       var third = tizen.bluetooth.toDOMString(dataString);
       ```
-      Both first, second and third variables are equal to *"0x18b1"*.
+      `first`, `second` and `third` variables are equal arrays.
 
    * `toUint8Array()`
       ```
@@ -81,7 +81,7 @@ The `Bytes` type, that aggregates all types in Bluetooth API used to pass binary
       var second = tizen.bluetooth.toUint8Array(dataUint8Array);
       var third = tizen.bluetooth.toUint8Array(dataString);
       ```
-      Both first, second and third variables are equal.
+      `first`, `second` and `third` variables are equal.
 
    * `uuidTo128bit()`
       ```
@@ -114,7 +114,7 @@ The `Bytes` type, that aggregates all types in Bluetooth API used to pass binary
       var third = tizen.bluetooth.uuidsEqual("abcdef01-2345-6789-abcd-ef0123456789", "abcdef01");
       ```
 
-      Both first and second variables are true. Variable third is false.
+      Both `first` and `second` are `true`. `third` is false.
 
 <!-- END #01 -->
 
@@ -486,7 +486,7 @@ To connect to other Bluetooth Low Energy devices:
 
 3. Define a callback for the scan operation that connects to a not connected found device and stops the scan.
 
-   Within the callback request, check if found device is connected and establish a connection with the not connected device using the `isConnected()` and `connect()` methods of the `BluetoothLEDevice` interface (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothLEDevice), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothLEDevice) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothLEDevice) applications):
+   Within the callback request, check if the found device is connected and establish a connection with the not connected device using the `isConnected()` and `connect()` methods of the `BluetoothLEDevice` interface (in [mobile](../../api/latest/device_api/mobile/tizen/bluetooth.html#BluetoothLEDevice), [wearable](../../api/latest/device_api/wearable/tizen/bluetooth.html#BluetoothLEDevice) and [tv](../../api/latest/device_api/tv/tizen/bluetooth.html#BluetoothLEDevice) applications):
 
    ```
    var remoteDevice = null;
