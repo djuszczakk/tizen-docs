@@ -43,6 +43,41 @@ Bluetooth API functions are case-insensitive with regard to UUIDs - lowercase (a
 
 The 128-bit UUID that is the base for UUIDs having 16-bit or 32-bit equivalents is defined available through the API in `BluetoothManager` as `BASE_UUID`.
 
+`BluetoothManager` methods to manipulate UUIDs:
+
+   * `uuidTo128bit()`
+      ```
+      var uuidFrom16bits = tizen.bluetooth.uuidTo128bit("1234");
+      var uuidFrom32bits = tizen.bluetooth.uuidTo128bit("ab5690ef");
+      var uuidFrom128bits = tizen.bluetooth.uuidTo128bit("abcdef01-2345-6789-abcd-ef0123456789");
+      ```
+
+      uuidFrom16bits is equal to "00001234-0000-1000-8000-00805f9b34fb"  
+      uuidFrom32bits is equal to "ab5690ef-0000-1000-8000-00805f9b34fb"  
+      uuidFrom128bits is equal to "abcdef01-2345-6789-abcd-ef0123456789"
+
+   * `uuidToShortestPossible()`
+      ```
+      var from16Bit = tizen.bluetooth.uuidToShortestPossible("1234");
+      var from32Bit = tizen.bluetooth.uuidToShortestPossible("0000acdf");
+      var from128BitFirst = tizen.bluetooth.uuidToShortestPossible("ab5690ef-0000-1000-8000-00805F9B34FB");
+      var from128BitSecond = tizen.bluetooth.uuidToShortestPossible("abcdef01-2345-6789-abcd-ef0123456789");
+      ```
+
+      from16Bit is equal to "1234"  
+      from32Bit is equal to "acdf"  
+      from128BitFirst is equal to "ab5690ef"  
+      from128BitSecond is equal to "abcdef01-2345-6789-abcd-ef0123456789"
+
+   * `uuidsEqual()`
+      ```
+      var first = tizen.bluetooth.uuidsEqual("1234", "00001234");
+      var second = tizen.bluetooth.uuidsEqual("ab5690ef", "ab5690ef-0000-1000-8000-00805F9B34FB");
+      var third = tizen.bluetooth.uuidsEqual("abcdef01-2345-6789-abcd-ef0123456789", "abcdef01");
+      ```
+
+      Both `first` and `second` are `true`. `third` is false.
+
 ### Handling binary data
 The `Bytes` type, that aggregates all types in Bluetooth API used to pass binary data. It can be either a *byte[]* or a *DOMString* or a *Uint8Array*.
 
@@ -83,38 +118,6 @@ The `Bytes` type, that aggregates all types in Bluetooth API used to pass binary
       ```
       `first`, `second` and `third` variables are equal.
 
-   * `uuidTo128bit()`
-      ```
-      var uuidFrom16bits = tizen.bluetooth.uuidTo128bit("1234");
-      var uuidFrom32bits = tizen.bluetooth.uuidTo128bit("ab5690ef");
-      var uuidFrom128bits = tizen.bluetooth.uuidTo128bit("abcdef01-2345-6789-abcd-ef0123456789");
-      ```
-
-      uuidFrom16bits is equal to "00001234-0000-1000-8000-00805f9b34fb"  
-      uuidFrom32bits is equal to "ab5690ef-0000-1000-8000-00805f9b34fb"  
-      uuidFrom128bits is equal to "abcdef01-2345-6789-abcd-ef0123456789"
-
-   * `uuidToShortestPossible()`
-      ```
-      var from16Bit = tizen.bluetooth.uuidToShortestPossible("1234");
-      var from32Bit = tizen.bluetooth.uuidToShortestPossible("0000acdf");
-      var from128BitFirst = tizen.bluetooth.uuidToShortestPossible("ab5690ef-0000-1000-8000-00805F9B34FB");
-      var from128BitSecond = tizen.bluetooth.uuidToShortestPossible("abcdef01-2345-6789-abcd-ef0123456789");
-      ```
-
-      from16Bit is equal to "1234"  
-      from32Bit is equal to "acdf"  
-      from128BitFirst is equal to "ab5690ef"  
-      from128BitSecond is equal to "abcdef01-2345-6789-abcd-ef0123456789"
-
-   * `uuidsEqual()`
-      ```
-      var first = tizen.bluetooth.uuidsEqual("1234", "00001234");
-      var second = tizen.bluetooth.uuidsEqual("ab5690ef", "ab5690ef-0000-1000-8000-00805F9B34FB");
-      var third = tizen.bluetooth.uuidsEqual("abcdef01-2345-6789-abcd-ef0123456789", "abcdef01");
-      ```
-
-      Both `first` and `second` are `true`. `third` is false.
 
 <!-- END #01 -->
 
